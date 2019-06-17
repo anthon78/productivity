@@ -1,4 +1,6 @@
 import React from "react";
+import axios from "axios";
+import styles from "./assets/styles.css";
 
 class App extends React.Component {
   constructor(props) {
@@ -8,10 +10,18 @@ class App extends React.Component {
     }
   }
 
+  componentWillMount() {
+    axios.get("http://www.boredapi.com/api/activity/")
+    .then(result => {
+      console.log(result.data);
+    })
+  }
+
   render() {
     return (
-      <div>
-        Hello
+      <div className ={styles.main}>
+        <div><img src={require('./robot.png')} className = {styles.image}></img></div>
+       <button className={styles.button}>I have too much free time</button>
       </div>
     )
   }
