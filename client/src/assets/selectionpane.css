@@ -5,3 +5,54 @@
   border-radius: 5px;
   background-color: whitesmoke; 
 }
+
+.main {
+  margin: 0 auto;
+  width: max-content;
+}
+
+.description {
+  text-align: center;
+  font-size: 2em;
+  color: green;
+  max-width: 500px;
+  word-wrap: break-word;
+  font-weight: bold;
+}
+
+.difficulty {
+  display: inline-block;
+  font-size: 1.5em;
+  margin-left: -75px;
+  font-weight: bold;
+}
+
+.cost {
+  display: inline-block;
+  margin-left: 225px;
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
+.buttonContainer {
+  width: max-content;
+  margin: 10px auto;
+}
+
+.acceptButton {
+  height: 50px;
+  width: 150px;
+  color: darkgreen;
+  background-color: lightgreen;
+  font-size: 2em;
+  margin-left: -90px;
+}
+
+.rejectButton {
+  height: 50px;
+  width: 150px;
+  color: darkred;
+  font-size: 2em;
+  background-color: lightcoral;
+  margin-left: 20px;
+}

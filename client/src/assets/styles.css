@@ -1,11 +1,8 @@
-.main {
-  margin: 0 auto;
-  width: max-content;
-}
-
 .image {
   width: 200px;
   height: 200px;
-  padding-left: 150px;
+  margin: 0 auto;
+  padding-right: 100px;
+  display: block;
 }
 

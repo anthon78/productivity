@@ -29,7 +29,7 @@ class App extends React.Component {
 
   render() {
     return (
-      <div className ={styles.main}>
+      <div>
         <div><img src={require('./robot.png')} className = {styles.image}></img></div>
         <SelectionPane 
           getNextTask = {this.getNextTask} 
