@@ -7,14 +7,14 @@ const TaskDashBoard = (props) => {
       <ul className = {styles.acceptedTasks}>
         {props.acceptedTasks.map((description,index) => 
         <li key = {index}>
-          <button className={styles.acceptedTaskButton}>{description}</button>
+          <button className={styles.acceptedTaskButton} onClick={props.deleteTask}>{description}</button>
         </li>)}
       </ul>
 
       <ul className = {styles.rejectedTasks}>
         {props.rejectedTasks.map((description,index) => 
           <li key = {index}>
-            <button className={styles.rejectedTaskButton}>{description}</button>
+            <button className={styles.rejectedTaskButton} onClick={() => props.deleteTask(event,false)}>{description}</button>
           </li> 
         )}        
       </ul>

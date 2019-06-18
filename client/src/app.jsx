@@ -18,6 +18,7 @@ class App extends React.Component {
     }
     this.getNextTask = this.getNextTask.bind(this);
     this.addTask = this.addTask.bind(this);
+    this.deleteTask = this.deleteTask.bind(this);
   }
 
   componentWillMount() {
@@ -64,6 +65,10 @@ class App extends React.Component {
     })
   }
 
+  deleteTask(event,accepted) {
+    console.log(event.target.innerHTML);
+  }
+
   render() {
     return (
       <div>
@@ -78,6 +83,7 @@ class App extends React.Component {
         <TaskDashBoard
           acceptedTasks = {this.state.acceptedTasks}
           rejectedTasks = {this.state.rejectedTasks}
+          deleteTask = {this.deleteTask}
         />
       </div>
     )
