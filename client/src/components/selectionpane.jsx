@@ -9,7 +9,7 @@ const SelectionPane = (props) => {
       <p className={styles.difficulty}>Difficulty Level: {props.currentTaskDifficulty} / 10</p>
       <p className = {styles.cost}>Estimated Cost: {props.currentTaskPrice} / 10</p>
       <div className={styles.buttonContainer}>
-        <button className={styles.acceptButton}>Accept</button>
+        <button className={styles.acceptButton} onClick={props.addTask}>Accept</button>
         <button className={styles.rejectButton}>Reject</button>
       </div>
     </div>

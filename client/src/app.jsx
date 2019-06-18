@@ -13,6 +13,7 @@ class App extends React.Component {
       currentTaskType: null,
     }
     this.getNextTask = this.getNextTask.bind(this);
+    this.addTask = this.addTask.bind(this);
   }
 
   getNextTask() {
@@ -27,11 +28,25 @@ class App extends React.Component {
     })
   }
 
+  addTask() {
+    axios.post('/api/acceptedTasks', {
+      description: this.state.currentTaskDescription,
+      difficullty: this.state.currentTaskDifficulty,
+      price:       this.state.currentTaskPrice,
+      type:        this.state.currentTaskType
+    })
+    .then(result => {
+      console.log(result);
+    })
+
+  }
+
   render() {
     return (
       <div>
         <div><img src={require('./robot.png')} className = {styles.image}></img></div>
         <SelectionPane 
+          addTask = {this.addTask}
           getNextTask = {this.getNextTask} 
           currentTaskDescription = {this.state.currentTaskDescription}
           currentTaskDifficulty = {this.state.currentTaskDifficulty}
