@@ -5,8 +5,18 @@
 
 .acceptedTasks {
   float: left;
+  list-style-type: none;
 }
 
 .rejectedTasks {
   float: right;
+  list-style-type: none;
+}
+
+.acceptedTaskButton {
+  height: 50px;
+  width: max-content;
+  font-size: 1.5em;
+  background-color: white;
+  color: darkgreen;
 }

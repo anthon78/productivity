@@ -20,6 +20,16 @@ class App extends React.Component {
     this.addTask = this.addTask.bind(this);
   }
 
+  componentWillMount() {
+    axios.get("/api/acceptedTasks")
+    .then(result => {
+      this.setState({
+        acceptedTasks : result.data.map((data) => data.description),
+      })
+      
+    })
+  }
+
   getNextTask() {
     axios.get("https://www.boredapi.com/api/activity/")
     .then(result => {
@@ -40,7 +50,9 @@ class App extends React.Component {
       type:        this.state.currentTaskType
     })
     .then(result => {
-      console.log(result);
+      this.setState((prevState) => ({
+        acceptedTasks : prevState.acceptedTasks.concat(this.state.currentTaskDescription)
+      }))
     })
 
   }
@@ -56,7 +68,10 @@ class App extends React.Component {
           currentTaskDifficulty = {this.state.currentTaskDifficulty}
           currentTaskPrice = {this.state.currentTaskPrice} 
         />
-        <TaskDashBoard />
+        <TaskDashBoard
+          acceptedTasks = {this.state.acceptedTasks}
+          rejectedTasks = {this.state.rejectedTasks}
+        />
       </div>
     )
   }
