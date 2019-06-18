@@ -4,7 +4,7 @@ const MongoClient = require("mongodb").MongoClient;
 const CONNECTION_URL = process.env.MONGO_URI;
 const DATABASE_NAME = 'taskData';
 
-module.exports.getAllAccepted = (callback) => {
+module.exports.getAll = (callback) => {
   MongoClient.connect(CONNECTION_URL, {useNewURLParser: true}, (error,client) => {
     if (error) {
       callback(error);
@@ -22,7 +22,7 @@ module.exports.getAllAccepted = (callback) => {
   })
 }
 
-module.exports.addToAccepted = (task,callback) => {
+module.exports.addTask = (task,callback) => {
   MongoClient.connect(CONNECTION_URL, {useNewURLParser: true}, (error,client) => {
     if (error) {
       callback(error);

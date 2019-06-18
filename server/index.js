@@ -16,7 +16,7 @@ app.use(express.static(path.join(__dirname, '../client/public/')));
 
 //routes
 app.get('/api/acceptedTasks', (req,res) => {
-  db.getAllAccepted((err,tasks) => {
+  db.getAll((err,tasks) => {
     if (err) {
       console.log("Error retrieving accepted tasks", err);
     } else {
@@ -27,7 +27,7 @@ app.get('/api/acceptedTasks', (req,res) => {
 
 app.post('/api/acceptedTasks', (req,res) => {
   let task = req.body;
-  db.addToAccepted(task,(err,tasks) => {
+  db.addTask(task,(err,tasks) => {
     if (err) {
       console.log("Error retrieving accepted tasks", err);
     } else {

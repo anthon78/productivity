@@ -11,7 +11,13 @@ const TaskDashBoard = (props) => {
         </li>)}
       </ul>
 
-      <p className = {styles.rejectedTasks}>Rejected</p>
+      <ul className = {styles.rejectedTasks}>
+        {props.rejectedTasks.map((description,index) => 
+          <li key = {index}>
+            <button className={styles.rejectedTaskButton}>{description}</button>
+          </li> 
+        )}        
+      </ul>
     </div>
   )
 }

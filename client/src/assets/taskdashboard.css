@@ -20,3 +20,11 @@
   background-color: white;
   color: darkgreen;
 }
+
+.rejectedTaskButton {
+  height: 50px;
+  width: max-content;
+  font-size: 1.5em;
+  background-color: white;
+  color: darkred;
+}

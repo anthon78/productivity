@@ -24,7 +24,8 @@ class App extends React.Component {
     axios.get("/api/acceptedTasks")
     .then(result => {
       this.setState({
-        acceptedTasks : result.data.map((data) => data.description),
+        acceptedTasks : result.data.filter((data) => data.accepted === true).map((data) => data.description),
+        rejectedTasks : result.data.filter((data) => data.accepted !== true).map((data) => data.description)
       })
       
     })
@@ -42,19 +43,25 @@ class App extends React.Component {
     })
   }
 
-  addTask() {
+  addTask(accepted) {
     axios.post('/api/acceptedTasks', {
       description: this.state.currentTaskDescription,
       difficullty: this.state.currentTaskDifficulty,
       price:       this.state.currentTaskPrice,
-      type:        this.state.currentTaskType
+      type:        this.state.currentTaskType,
+      accepted: accepted
     })
     .then(result => {
-      this.setState((prevState) => ({
-        acceptedTasks : prevState.acceptedTasks.concat(this.state.currentTaskDescription)
-      }))
+      if (accepted) {
+        this.setState((prevState) => ({
+         acceptedTasks : prevState.acceptedTasks.concat(this.state.currentTaskDescription)
+        }))
+      } else {
+        this.setState((prevState) => ({
+          rejectedTasks : prevState.rejectedTasks.concat(this.state.currentTaskDescription)
+        }))    
+      }
     })
-
   }
 
   render() {
