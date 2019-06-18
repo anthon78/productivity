@@ -8,9 +8,10 @@ class App extends React.Component {
     this.state = {
       currentTask: {},
     }
+    this.getNextTask = this.getNextTask.bind(this);
   }
 
-  componentWillMount() {
+  getNextTask() {
     axios.get("https://www.boredapi.com/api/activity/")
     .then(result => {
       this.setState({
@@ -23,7 +24,7 @@ class App extends React.Component {
     return (
       <div className ={styles.main}>
         <div><img src={require('./robot.png')} className = {styles.image}></img></div>
-       <button className={styles.button}>I have too much free time</button>
+       <button className={styles.button} onClick = {this.getNextTask}>I have too much free time</button>
       </div>
     )
   }
