@@ -1,12 +1,16 @@
 import React from "react";
 import axios from "axios";
 import styles from "./assets/styles.css";
+import SelectionPane from "./components/selectionpane.jsx";
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      currentTask: {},
+      currentTaskDescription: null,
+      currentTaskDifficulty: null,
+      currentTaskPrice: null,
+      currentTaskType: null,
     }
     this.getNextTask = this.getNextTask.bind(this);
   }
@@ -15,7 +19,10 @@ class App extends React.Component {
     axios.get("https://www.boredapi.com/api/activity/")
     .then(result => {
       this.setState({
-        currentTask: result.data,
+        currentTaskDescription: result.data.activity,
+        currentTaskDifficulty: result.data.accessibility * 10,
+        currentTaskPrice: result.data.price * 10,
+        currentTaskType: result.data.type,
       })
     })
   }
@@ -24,7 +31,12 @@ class App extends React.Component {
     return (
       <div className ={styles.main}>
         <div><img src={require('./robot.png')} className = {styles.image}></img></div>
-       <button className={styles.button} onClick = {this.getNextTask}>I have too much free time</button>
+        <SelectionPane 
+          getNextTask = {this.getNextTask} 
+          currentTaskDescription = {this.state.currentTaskDescription}
+          currentTaskDifficulty = {this.state.currentTaskDifficulty}
+          currentTaskPrice = {this.state.currentTaskPrice} 
+        />
       </div>
     )
   }
