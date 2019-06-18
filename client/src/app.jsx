@@ -6,14 +6,16 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-
+      currentTask: {},
     }
   }
 
   componentWillMount() {
-    axios.get("http://www.boredapi.com/api/activity/")
+    axios.get("https://www.boredapi.com/api/activity/")
     .then(result => {
-      console.log(result.data);
+      this.setState({
+        currentTask: result.data,
+      })
     })
   }
 
