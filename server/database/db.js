@@ -1,6 +1,7 @@
 const MongoClient = require("mongodb").MongoClient;
 
-const CONNECTION_URL = 'mongodb://localhost:27017/taskData';
+//'mongodb://localhost:27017/taskData'
+const CONNECTION_URL = process.env.MONGO_URI;
 const DATABASE_NAME = 'taskData';
 
 module.exports.getAllAccepted = (callback) => {
