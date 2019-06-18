@@ -2,6 +2,7 @@ import React from "react";
 import axios from "axios";
 import styles from "./assets/styles.css";
 import SelectionPane from "./components/selectionpane.jsx";
+import TaskDashBoard from "./components/taskdashboard.jsx";
 
 class App extends React.Component {
   constructor(props) {
@@ -11,6 +12,9 @@ class App extends React.Component {
       currentTaskDifficulty: null,
       currentTaskPrice: null,
       currentTaskType: null,
+
+      rejectedTasks: [], 
+      acceptedTasks: []
     }
     this.getNextTask = this.getNextTask.bind(this);
     this.addTask = this.addTask.bind(this);
@@ -52,6 +56,7 @@ class App extends React.Component {
           currentTaskDifficulty = {this.state.currentTaskDifficulty}
           currentTaskPrice = {this.state.currentTaskPrice} 
         />
+        <TaskDashBoard />
       </div>
     )
   }

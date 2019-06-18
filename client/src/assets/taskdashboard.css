@@ -1,0 +1,12 @@
+.dashboard {
+  border: 1px solid lightgreen;
+  overflow: auto;
+}
+
+.acceptedTasks {
+  float: left;
+}
+
+.rejectedTasks {
+  float: right;
+}
