@@ -1,0 +1,20 @@
+.rewardpane {
+  width: 50%;
+  margin: 0 auto;
+  border: 5px solid green;
+  background-color: lightgreen;
+  border-radius: 5px;
+  display: block;
+}
+
+.levelup {
+  font-size: 3em;
+  text-align: center;
+  color: green;
+}
+
+.reward {
+  font-size: 6em;
+  text-align: center;
+  color: darkgreen;
+}

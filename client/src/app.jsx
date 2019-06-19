@@ -14,17 +14,19 @@ class App extends React.Component {
       currentTaskDifficulty: null,
       currentTaskPrice: null,
       currentTaskType: null,
+      leveledUp : false,
 
       rejectedTasks: [], 
       acceptedTasks: [],
       xp : 0,
       level: 0,
-      rewards: ["buy a beer", "go to the bar", "eat some unhealthy food",
-                "play some Eve Online"]
+      rewards: ["buy a beer", "go to the bar", "go to the pool",
+                "play some vdeo games", "go out to eat"]
     }
     this.getNextTask = this.getNextTask.bind(this);
     this.addTask = this.addTask.bind(this);
     this.deleteTask = this.deleteTask.bind(this);
+    this.removeReward = this.removeReward.bind(this);
   }
 
   componentWillMount() {
@@ -111,11 +113,24 @@ class App extends React.Component {
     .then(() => {
       //set state
       if (accepted) {
+        let lastLevel = this.state.level;
         this.setState((prevState) => ({
           xp : prevState.xp + difficulty,
           level : Math.floor((prevState.xp + difficulty) / 10)
-        }))
+        }), () => {
+          if (this.state.level > lastLevel) {
+            this.setState({
+              leveledUp : true
+            })
+          }
+        })
       }
+    })
+  }
+
+  removeReward() {
+    this.setState({
+      leveledUp: false,
     })
   }
 
@@ -138,8 +153,13 @@ class App extends React.Component {
         <StatsDashboard
           level = {this.state.level} 
           xp = {this.state.xp}
+        />
+        {this.state.leveledUp === true &&
+          <RewardPane 
+            choices = {this.state.rewards}
+            removeReward = {this.removeReward}
           />
-        <RewardPane />
+        }
       </div>
     )
   }
