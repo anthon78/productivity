@@ -48,7 +48,18 @@ app.post('/api/acceptedTasks', (req,res) => {
 
 app.post('/api/deleteTask', (req,res) => {
   let task = req.body.description;
-  db.deleteTast(task, (err,response) => {
+  db.deleteTask(task, (err,response) => {
+    if (err) {
+      console.log("Error deleting task", err);
+    } else {
+      res.send(response);
+    }
+  })
+})
+
+app.post('/api/stats', (req,res) => {
+  let task = req.body;
+  db.setStats(task, (err,response) => {
     if (err) {
       console.log("Error deleting task", err);
     } else {
