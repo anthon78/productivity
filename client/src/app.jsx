@@ -32,7 +32,16 @@ class App extends React.Component {
         acceptedTasks : result.data.filter((data) => data.accepted === true).map((data) => data.description),
         rejectedTasks : result.data.filter((data) => data.accepted !== true).map((data) => data.description)
       })
-      
+    })
+    .then(() => {
+      axios.get('/api/stats')
+      .then((result) => {
+        console.log("result",result.data);
+        this.setState({
+          xp: result.data.xp,
+          level : Math.floor((result.data.xp) / 10)
+        })
+      })
     })
   }
 
