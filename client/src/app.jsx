@@ -4,6 +4,8 @@ import styles from "./assets/styles.css";
 import SelectionPane from "./components/selectionpane.jsx";
 import TaskDashBoard from "./components/taskdashboard.jsx";
 import StatsDashboard from "./components/statsdashboard.jsx";
+import RewardPane from "./components/rewardpane.jsx";
+
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -137,6 +139,7 @@ class App extends React.Component {
           level = {this.state.level} 
           xp = {this.state.xp}
           />
+        <RewardPane />
       </div>
     )
   }
