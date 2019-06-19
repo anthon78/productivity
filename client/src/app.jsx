@@ -3,7 +3,7 @@ import axios from "axios";
 import styles from "./assets/styles.css";
 import SelectionPane from "./components/selectionpane.jsx";
 import TaskDashBoard from "./components/taskdashboard.jsx";
-
+import StatsDashboard from "./components/statsdashboard.jsx";
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -77,12 +77,10 @@ class App extends React.Component {
     .then(() => {
       if (accepted === true) {
         this.setState((prevState) => ({
-          //delete from state
           acceptedTasks: prevState.acceptedTasks.filter((desc) => desc !== description)
         }))
       } else {
         this.setState((prevState) => ({
-          //delete from state
           rejectedTasks: prevState.rejectedTasks.filter((desc) => desc !== description)
         }))
       }
@@ -105,6 +103,7 @@ class App extends React.Component {
           rejectedTasks = {this.state.rejectedTasks}
           deleteTask = {this.deleteTask}
         />
+        <StatsDashboard />
       </div>
     )
   }
