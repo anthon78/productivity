@@ -14,7 +14,11 @@ class App extends React.Component {
       currentTaskType: null,
 
       rejectedTasks: [], 
-      acceptedTasks: []
+      acceptedTasks: [],
+      xp : 0,
+      level: 0,
+      rewards: ["buy a beer", "go to the club", "eat some unhealthy food",
+                "play some Eve Online"]
     }
     this.getNextTask = this.getNextTask.bind(this);
     this.addTask = this.addTask.bind(this);
@@ -103,7 +107,10 @@ class App extends React.Component {
           rejectedTasks = {this.state.rejectedTasks}
           deleteTask = {this.deleteTask}
         />
-        <StatsDashboard />
+        <StatsDashboard
+          level = {this.state.level} 
+          xp = {this.state.xp}
+          />
       </div>
     )
   }

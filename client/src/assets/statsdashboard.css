@@ -1,0 +1,12 @@
+.statsdashboard {
+  width: 70%;
+  margin: 0 auto;
+}
+
+.level, .xp, .neededXp {
+  display: inline-block;
+  margin-left: 18%;
+  font-size: 1.5em;
+  font-weight: bold;
+  color: black;
+}
