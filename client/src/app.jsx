@@ -17,7 +17,7 @@ class App extends React.Component {
       acceptedTasks: [],
       xp : 0,
       level: 0,
-      rewards: ["buy a beer", "go to the club", "eat some unhealthy food",
+      rewards: ["buy a beer", "go to the bar", "eat some unhealthy food",
                 "play some Eve Online"]
     }
     this.getNextTask = this.getNextTask.bind(this);
@@ -40,7 +40,7 @@ class App extends React.Component {
     axios.get("https://www.boredapi.com/api/activity/")
     .then(result => {
       this.setState({
-        currentTaskDescription: result.data.activity,
+        currentTaskDescription: result.data.activity + ` |${result.data.accessibility * 10}`,
         currentTaskDifficulty: result.data.accessibility * 10,
         currentTaskPrice: result.data.price * 10,
         currentTaskType: result.data.type,
