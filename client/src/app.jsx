@@ -45,6 +45,8 @@ class App extends React.Component {
   }
 
   addTask(accepted) {
+    if (this.state.currentTaskDescription === null) return;
+    
     axios.post('/api/acceptedTasks', {
       description: this.state.currentTaskDescription,
       difficullty: this.state.currentTaskDifficulty,
@@ -66,7 +68,25 @@ class App extends React.Component {
   }
 
   deleteTask(event,accepted) {
+    console.log(accepted);
     console.log(event.target.innerHTML);
+    let description = event.target.innerHTML
+    axios.post("/api/deleteTask", {
+      description: description
+    })
+    .then(() => {
+      if (accepted === true) {
+        this.setState((prevState) => ({
+          //delete from state
+          acceptedTasks: prevState.acceptedTasks.filter((desc) => desc !== description)
+        }))
+      } else {
+        this.setState((prevState) => ({
+          //delete from state
+          rejectedTasks: prevState.rejectedTasks.filter((desc) => desc !== description)
+        }))
+      }
+    })
   }
 
   render() {

@@ -39,3 +39,21 @@ module.exports.addTask = (task,callback) => {
     }
   })
 }
+
+module.exports.deleteTast = (description, callback) => {
+  MongoClient.connect(CONNECTION_URL, {useNewURLParser: true}, (error,client) => {
+    if (error) {
+      callback(error);
+    } else {
+      database = client.db(DATABASE_NAME);
+      collection = database.collection("acceptedTasks");
+      collection.deleteOne({description : description}, (err,result) => {
+        if (err) {
+          callback(err);
+        } else {
+          callback(null,result);
+        }
+      })
+    }
+  })
+}

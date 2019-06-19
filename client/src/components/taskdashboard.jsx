@@ -7,7 +7,7 @@ const TaskDashBoard = (props) => {
       <ul className = {styles.acceptedTasks}>
         {props.acceptedTasks.map((description,index) => 
         <li key = {index}>
-          <button className={styles.acceptedTaskButton} onClick={props.deleteTask}>{description}</button>
+          <button className={styles.acceptedTaskButton} onClick={() => props.deleteTask(event,true)}>{description}</button>
         </li>)}
       </ul>
 
