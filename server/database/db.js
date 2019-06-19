@@ -86,7 +86,7 @@ module.exports.setStats = (stats, callback) => {
       let o_id = new mongo.ObjectId("5d0a53121c9d4400004dba40");
       database = client.db(DATABASE_NAME);
       collection = database.collection("taskStats");
-      collection.updateOne({_id : o_id},{$inc: {xp:stats.xp, tasksCompleted: 1}}, (err,result) => {
+      collection.updateOne({_id : o_id},{$inc: {xp:stats.xp, tasksCompleted: 1, rejects: stats.rejects}}, (err,result) => {
         if (err) {
           callback(err);
         } else {

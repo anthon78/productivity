@@ -50,7 +50,8 @@ class App extends React.Component {
         console.log("result",result.data);
         this.setState({
           xp: result.data.xp,
-          level : Math.floor((result.data.xp) / 10)
+          level : Math.floor((result.data.xp) / 10),
+          rejects : result.data.rejects
         })
       })
     })
@@ -115,7 +116,13 @@ class App extends React.Component {
       //update db
       if (accepted) {
         axios.post('/api/stats', {
-          xp: difficulty
+          xp: difficulty,
+          rejects: 0
+        })
+      } else {
+        axios.post('/api/stats' , {
+          xp : 0,
+          rejects: 1
         })
       }
     })
