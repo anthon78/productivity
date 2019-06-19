@@ -10,5 +10,5 @@ const StatsDashboard = (props) => {
     </div>
   )
 }
-
+  
 export default StatsDashboard;
