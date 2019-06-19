@@ -115,7 +115,7 @@ class App extends React.Component {
       if (accepted) {
         let lastLevel = this.state.level;
         this.setState((prevState) => ({
-          xp : prevState.xp + difficulty,
+          xp : Number((prevState.xp + difficulty).toFixed(1)),
           level : Math.floor((prevState.xp + difficulty) / 10)
         }), () => {
           if (this.state.level > lastLevel) {
