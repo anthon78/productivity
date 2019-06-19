@@ -25,6 +25,16 @@ app.get('/api/acceptedTasks', (req,res) => {
   })
 })
 
+app.get('/api/stats', (req,res) => {
+  db.getStats((err,stats) => {
+    if (err) {
+      console.log("Error retrieving stats", err);
+    } else {
+      res.send(stats);
+    }
+  })
+})
+
 app.post('/api/acceptedTasks', (req,res) => {
   let task = req.body;
   db.addTask(task,(err,tasks) => {
