@@ -5,6 +5,8 @@ import SelectionPane from "./components/selectionpane.jsx";
 import TaskDashBoard from "./components/taskdashboard.jsx";
 import StatsDashboard from "./components/statsdashboard.jsx";
 import RewardPane from "./components/rewardpane.jsx";
+import RejectPane from "./components/rejectpane.jsx";
+
 
 class App extends React.Component {
   constructor(props) {
@@ -15,6 +17,8 @@ class App extends React.Component {
       currentTaskPrice: null,
       currentTaskType: null,
       leveledUp : false,
+      rejectUp: false,
+      rejects : 0,
 
       rejectedTasks: [], 
       acceptedTasks: [],
@@ -98,6 +102,8 @@ class App extends React.Component {
         }))
       } else {
         this.setState((prevState) => ({
+          rejects: prevState.rejects + 1,
+          rejectUp : ((prevState.rejects + 1) % 5 === 0) ? true : false,
           rejectedTasks: prevState.rejectedTasks.filter((desc) => desc !== description)
         }))
       }
@@ -153,12 +159,16 @@ class App extends React.Component {
         <StatsDashboard
           level = {this.state.level} 
           xp = {this.state.xp}
+          rejects = {this.state.rejects}
         />
         {this.state.leveledUp === true &&
           <RewardPane 
             choices = {this.state.rewards}
             removeReward = {this.removeReward}
           />
+        }
+        {this.state.rejectUp === true &&
+          <RejectPane />
         }
       </div>
     )
