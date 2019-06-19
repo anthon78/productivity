@@ -25,12 +25,15 @@ class App extends React.Component {
       xp : 0,
       level: 0,
       rewards: ["buy a beer", "go to the bar", "go to the pool",
-                "play some vdeo games", "go out to eat"]
+                "play some vdeo games", "go out to eat"],
+      punishments: ["read a short book", "do 100 pushups", "run a mile",
+                    "healthy food for a week"]
     }
     this.getNextTask = this.getNextTask.bind(this);
     this.addTask = this.addTask.bind(this);
     this.deleteTask = this.deleteTask.bind(this);
     this.removeReward = this.removeReward.bind(this);
+    this.removeReject = this.removeReject.bind(this);
   }
 
   componentWillMount() {
@@ -140,6 +143,12 @@ class App extends React.Component {
     })
   }
 
+  removeReject() {
+    this.setState({
+      rejectUp: false,
+    })
+  }
+
   render() {
     return (
       <div>
@@ -168,7 +177,10 @@ class App extends React.Component {
           />
         }
         {this.state.rejectUp === true &&
-          <RejectPane />
+          <RejectPane
+            choices = {this.state.punishments}
+            removeReject = {this.removeReject}
+          />
         }
       </div>
     )
