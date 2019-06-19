@@ -91,9 +91,16 @@ class App extends React.Component {
     })
     .then(() => {
       //update db
+      axios.post('/api/stats', {
+        xp: difficulty
+      })
     })
     .then(() => {
       //set state
+      this.setState((prevState) => ({
+        xp : prevState.xp + difficulty,
+        level : Math.floor((prevState.xp + difficulty) / 10)
+      }))
     })
   }
 
