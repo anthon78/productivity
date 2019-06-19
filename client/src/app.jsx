@@ -72,8 +72,8 @@ class App extends React.Component {
   }
 
   deleteTask(event,accepted) {
-    console.log(accepted);
-    console.log(event.target.innerHTML);
+    console.log((event.target.innerHTML.split("|")[1]))
+    let difficulty = Number(event.target.innerHTML.split("|")[1]);
     let description = event.target.innerHTML
     axios.post("/api/deleteTask", {
       description: description
@@ -88,6 +88,12 @@ class App extends React.Component {
           rejectedTasks: prevState.rejectedTasks.filter((desc) => desc !== description)
         }))
       }
+    })
+    .then(() => {
+      //update db
+    })
+    .then(() => {
+      //set state
     })
   }
 
