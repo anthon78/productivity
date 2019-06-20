@@ -74,6 +74,16 @@ class App extends React.Component {
 
   addTask(accepted) {
     if (this.state.currentTaskDescription === null) return;
+    if (accepted) {
+      if (this.state.acceptedTasks.indexOf(this.state.currentTaskDescription) >= 0) {
+        return;
+      }
+    }
+    if (accepted === false) {
+      if (this.state.rejectedTasks.indexOf(this.state.currentTaskDescription) >= 0) {
+        return;
+      }      
+    }
     
     axios.post('/api/acceptedTasks', {
       description: this.state.currentTaskDescription,
