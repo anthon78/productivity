@@ -183,7 +183,7 @@ class App extends React.Component {
           />
           </>
         }
-        <div><img src={require('./robot.png')} className = {styles.image}></img></div>
+        <div><img src={require('./virus.png')} className = {styles.image}></img></div>
         <SelectionPane 
           addTask = {this.addTask}
           getNextTask = {this.getNextTask} 

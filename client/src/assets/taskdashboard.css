@@ -1,9 +1,10 @@
 .dashboard {
-  border: 5px solid lightgray;
+  border: 5px solid lightgreen;
   border-radius: 5px;
   overflow: auto;
   margin: 50px auto;
   width: 80%;
+  background-color: #f5fbf5;
 }
 
 .acceptedTasks {
@@ -22,6 +23,9 @@
   font-size: 1.5em;
   background-color: white;
   color: darkgreen;
+  margin-top: 3px;
+  border: 2px solid lightgreen;
+  border-radius: 3px;
 }
 
 .rejectedTaskButton {
@@ -31,4 +35,7 @@
   background-color: white;
   color: darkred;
   margin-right: 40px;
+  margin-top: 3px;
+  border: 2px solid lightcoral;
+  border-radius: 3px;
 }

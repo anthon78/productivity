@@ -2,8 +2,9 @@
   position : absolute;
   top: 10px;
   right: 150px;
-  border: 5px solid lightgray;
+  border: 5px solid lightgreen;
   border-radius: 5px;
+  background-color: #f5fbf5
 }
 
 .level, .xp, .neededXp, .rejects {
@@ -11,5 +12,5 @@
   margin-left: 18%;
   font-size: 2em;
   font-weight: bold;
-  color: black;
+  color: darkgreen;
 }
