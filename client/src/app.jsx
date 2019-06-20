@@ -6,6 +6,7 @@ import TaskDashBoard from "./components/taskdashboard.jsx";
 import StatsDashboard from "./components/statsdashboard.jsx";
 import RewardPane from "./components/rewardpane.jsx";
 import RejectPane from "./components/rejectpane.jsx";
+import ChartPane from "./components/chartpane.jsx";
 
 
 class App extends React.Component {
@@ -189,6 +190,8 @@ class App extends React.Component {
             removeReject = {this.removeReject}
           />
         }
+        <ChartPane />
+
       </div>
     )
   }
