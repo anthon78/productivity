@@ -6,8 +6,8 @@ const SelectionPane = (props) => {
     <div className={styles.main}>
       <button className={styles.button} onClick = {props.getNextTask}>I have too much free time</button>
       <p className={styles.description}>{(props.currentTaskDescription === null) ? null : props.currentTaskDescription.split("|")[0]}</p>
-      <p className={styles.difficulty}>Difficulty Level: {props.currentTaskDifficulty} / 10</p>
-      <p className = {styles.cost}>Estimated Cost: {props.currentTaskPrice} / 10</p>
+      {(props.currentTaskDifficulty === null) ? null : <p className={styles.difficulty}>Difficulty Level: {props.currentTaskDifficulty} / 10</p>}
+      {(props.currentTaskPrice === null) ? null : <p className = {styles.cost}>Estimated Cost: {props.currentTaskPrice} / 10</p>}
       <div className={styles.buttonContainer}>
         <button className={styles.acceptButton} onClick={() => props.addTask(true)}>Accept</button>
         <button className={styles.rejectButton} onClick={() => props.addTask(false)} >Reject</button>
