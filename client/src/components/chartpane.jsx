@@ -10,6 +10,7 @@ const ChartPane = (props) => {
       options = {{
         animateRotate : true,
         animateScale: true,
+        animationSteps: 150,
         segmentStrokeColor : "#ggg",
       }}
       width={350}
