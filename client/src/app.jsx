@@ -7,7 +7,7 @@ import StatsDashboard from "./components/statsdashboard.jsx";
 import RewardPane from "./components/rewardpane.jsx";
 import RejectPane from "./components/rejectpane.jsx";
 import ChartPane from "./components/chartpane.jsx";
-
+import Confetti from "react-confetti";
 
 class App extends React.Component {
   constructor(props) {
@@ -173,6 +173,14 @@ class App extends React.Component {
   render() {
     return (
       <div>
+        {this.state.leveledUp === true &&
+          <Confetti 
+            height={1200}
+            numberOfPieces = {500}
+            wind={0.01}
+            onClick = {this.removeReward}
+          />
+        }
         <div><img src={require('./robot.png')} className = {styles.image}></img></div>
         <SelectionPane 
           addTask = {this.addTask}

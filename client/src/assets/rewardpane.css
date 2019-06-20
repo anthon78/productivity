@@ -5,6 +5,7 @@
   background-color: lightgreen;
   border-radius: 5px;
   display: block;
+  z-index: 2;
 }
 
 .levelup {
