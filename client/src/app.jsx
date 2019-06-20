@@ -174,12 +174,14 @@ class App extends React.Component {
     return (
       <div>
         {this.state.leveledUp === true &&
+          <>
           <Confetti 
             height={1200}
             numberOfPieces = {500}
             wind={0.01}
             onClick = {this.removeReward}
           />
+          </>
         }
         <div><img src={require('./robot.png')} className = {styles.image}></img></div>
         <SelectionPane 
