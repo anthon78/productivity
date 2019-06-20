@@ -177,7 +177,7 @@ class App extends React.Component {
           <>
           <Confetti 
             height={1200}
-            numberOfPieces = {500}
+            numberOfPieces = {600}
             wind={0.01}
             onClick = {this.removeReward}
           />
