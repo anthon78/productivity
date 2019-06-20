@@ -9,7 +9,7 @@
 .level, .xp, .neededXp, .rejects {
   /* display: inline-block; */
   margin-left: 18%;
-  font-size: 1.5em;
+  font-size: 2em;
   font-weight: bold;
   color: black;
 }
