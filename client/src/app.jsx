@@ -20,6 +20,7 @@ class App extends React.Component {
       leveledUp : false,
       rejectUp: false,
       rejects : 0,
+      tasksCompleted: 0,
 
       rejectedTasks: [], 
       acceptedTasks: [],
@@ -52,7 +53,8 @@ class App extends React.Component {
         this.setState({
           xp: result.data.xp,
           level : Math.floor((result.data.xp) / 10),
-          rejects : result.data.rejects
+          rejects : result.data.rejects,
+          tasksCompleted : result.data.tasksCompleted
         })
       })
     })
@@ -103,7 +105,8 @@ class App extends React.Component {
     .then(() => {
       if (accepted === true) {
         this.setState((prevState) => ({
-          acceptedTasks: prevState.acceptedTasks.filter((desc) => desc !== description)
+          acceptedTasks: prevState.acceptedTasks.filter((desc) => desc !== description),
+          tasksCompleted: prevState.tasksCompleted + 1
         }))
       } else {
         this.setState((prevState) => ({
@@ -190,7 +193,10 @@ class App extends React.Component {
             removeReject = {this.removeReject}
           />
         }
-        <ChartPane />
+        <ChartPane
+         rejectedTasks = {this.state.rejects}
+         completedTasks = {this.state.tasksCompleted}
+         />
 
       </div>
     )
